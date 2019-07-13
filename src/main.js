@@ -3,7 +3,7 @@ import Antd from 'ant-design-vue'
 import App from './App'
 import 'ant-design-vue/dist/antd.css'
 import Multiselect from 'vue-multiselect'
-
+import routes from './routes'
 // register globally
 Vue.component('multiselect', Multiselect)
 

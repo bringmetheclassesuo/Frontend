@@ -19,8 +19,8 @@
       </a-layout-header>
     </div>
     <div class = "search">
-        <div>
-          <div style="padding-top: 35%">
+
+          <div style="padding-top: 45%">
             <multiselect
                     style="float: left; width: 92%;"
                     v-model="value" placeholder="Search. . ."
@@ -55,7 +55,7 @@
             <!--    <span> {{filters}}</span>-->
           </div>
           <a-button type="primary" @click="openNotification" style="margin: 10px">Open the notification box</a-button>
-          </div>
+
 
     </div>
   </div>
@@ -131,7 +131,7 @@ a {
   color: #42b983;
 }
   div.search{
-    width: 70%;
+    width: 60%;
     display: block;
     margin-left: auto;
     margin-right: auto;
