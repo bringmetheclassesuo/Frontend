@@ -1,24 +1,6 @@
 <template>
     <div class="hello">
-        <div>
 
-            <!--<a-layout-header :style="{ position: 'fixed', zIndex: 1, width: '100%', paddingLeft: '25px' }">
-                <div class="logo"/>
-                <h1 class="title">Searchinator</h1>
-                <a-menu
-                        theme="dark"
-                        mode="horizontal"
-                        :defaultSelectedKeys=[keyNum]
-                        :style="{ lineHeight: '64px' }"
-                        style="float: right"
-                        :selectedKeys=[keyNum]
-                >
-                    <a-menu-item key="1">Search</a-menu-item>
-                    <a-menu-item key="2" @click="favourite">Favourites</a-menu-item>
-                    <a-menu-item key="3" @click="switchpage('login')">Log In</a-menu-item>
-                </a-menu>
-            </a-layout-header>-->
-        </div>
         <div class="search">
 
             <div style="padding-top: 45%">

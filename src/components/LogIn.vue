@@ -1,60 +1,126 @@
 <template>
     <div>
-        <!--<a-layout-header :style="{ position: 'fixed', zIndex: 1, width: '100%', paddingLeft: '25px' }">
-            <div class="logo"/>
-            <h1 class="title">Searchinator</h1>
-            <a-menu
-                    theme="dark"
-                    mode="horizontal"
-                    :defaultSelectedKeys=[keyNum]
-                    :style="{ lineHeight: '64px' }"
-                    style="float: right"
-                    :selectedKeys= [keyNum]
+        <a-card
+                hoverable
+                class="card"
+        >
+            <h2>Login to your Account</h2>
+            <a-form
+                    layout="vertical"
+                    :form="form"
+                    @submit="handleSubmit"
             >
-                <a-menu-item key="1" @click="switchpage('/')">Search</a-menu-item>
-                <a-menu-item key="2" @click="favourite">Favourites</a-menu-item>
-                <a-menu-item key="3" @click="switchpage('login')">Log In</a-menu-item>
-            </a-menu>
-        </a-layout-header>-->
-        <div><h1 style="padding-top: 20%">hello</h1></div>
+                <a-form-item
+                        :validate-status="userNameError() ? 'error' : ''"
+                        :help="userNameError() || ''"
+                >
+                    <span class="txt">Username</span>
+                    <a-input
+                            v-decorator="['userName',{rules: [{ required: true, message: 'Please input your username!' }]}]"
+                            placeholder="Username"
+                    >
+                        <a-icon
+                                slot="prefix"
+                                type="user"
+                                style="color:rgba(0,0,0,.25)"
+                        />
+                    </a-input>
+                </a-form-item>
+                <a-form-item
+                        :validate-status="passwordError() ? 'error' : ''"
+                        :help="passwordError() || ''"
+                >
+                    <span class="txt">Password</span>
+                    <a-input
+                            v-decorator="['password',{rules: [{ required: true, message: 'Please input your Password!' }]}]"
+                            type="password"
+                            placeholder="Password"
+                    >
+                        <a-icon
+                                slot="prefix"
+                                type="lock"
+                                style="color:rgba(0,0,0,.25)"
+                        />
+                    </a-input>
+                </a-form-item>
+                <a-form-item>
+                    <a-button
+                            type="primary"
+                            html-type="submit"
+                            :disabled="hasErrors(form.getFieldsError())"
+                            style="width: 100%"
+                    >
+                        Log in
+                    </a-button>
+                    <div style="padding-top: 2%; padding-bottom: 2%">
+                        <span>or</span>
+                    </div>
+                    <a-button
+                            type="secondary"
+                            icon="google"
+                            :size="large"
+                            style="width: 100%"
+                    >
+                        Sign in with Google
+                    </a-button>
+                </a-form-item>
+            </a-form>
+            <a style="bottom: 3%; display: inline-block;" @click="create">Don't have an account? Sign up here</a>
+        </a-card>
     </div>
 </template>
 
 <script>
+    function hasErrors (fieldsError) {
+        return Object.keys(fieldsError).some(field => fieldsError[field]);
+    }
     export default {
         name: "LogIn",
-        data () {
+        data() {
             return {
-                keyNum: '3',
-                loggedIn: false
+                hasErrors,
+                form: this.$form.createForm(this),
             }
         },
-        methods:{
-           favourite(){
-                if (this.loggedIn == false){
-                    const h = this.$createElement
-                    this.$info({
-                        title: 'You do not have access to this feature',
-                        content: h('div',{}, [
-                            h('p', 'If you would like to use favourites, please log in'),
-                        ]),
-                        onOk() {},
-                    });
-                }
-           },
-            switchpage(login){
-                this.$router.push({ path: login })
+        mounted () {
+            this.$nextTick(() => {
+                // To disabled submit button at the beginning.
+                this.form.validateFields();
+            });
+        },
+        methods: {
+            userNameError () {
+                const { getFieldError, isFieldTouched } = this.form;
+                return isFieldTouched('userName') && getFieldError('userName');
+            },
+            // Only show error after a field is touched.
+            passwordError () {
+                const { getFieldError, isFieldTouched } = this.form;
+                return isFieldTouched('password') && getFieldError('password');
+            },
+            handleSubmit  (e) {
+                e.preventDefault();
+                this.form.validateFields((err, values) => {
+                    if (!err) {
+                        this.console.log('Received values of form: ', values);
+                    }
+                });
+            },
+            create(){
+                this.$router.push('create')
             }
         }
     }
 </script>
 
 <style scoped>
-    .title{
-        z-index: 2;
-        position: fixed;
+    .card {
+        display: inline-block;
+        width: 60%;
+        margin-top: 13%;
+    }
+    .txt{
         float: left;
-        font-size: xx-large;
-        color: #FFFFFF;
+        padding-bottom: 1%;
     }
 </style>
