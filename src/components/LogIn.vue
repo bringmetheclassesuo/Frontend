@@ -16,7 +16,7 @@
                 <a-menu-item key="3" @click="switchpage('login')">Log In</a-menu-item>
             </a-menu>
         </a-layout-header>-->
-        <div><h1 style="padding-top: 35%">hello</h1></div>
+        <div><h1 style="padding-top: 20%">hello</h1></div>
     </div>
 </template>
 

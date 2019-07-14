@@ -17,7 +17,7 @@
         <a-menu-item key="3" @click="switchpage('login')">Log In</a-menu-item>
       </a-menu>
     </a-layout-header>
-    <transition name="fade">
+    <transition name="component-fade" mode="out-in">
       <router-view/>
     </transition>
   </div>
@@ -82,5 +82,12 @@ export default {
   float: left;
   font-size: xx-large;
   color: #FFFFFF;
+}
+.component-fade-enter-active, .component-fade-leave-active {
+    transition: opacity .3s ease;
+}
+.component-fade-enter, .component-fade-leave-to
+    /* .component-fade-leave-active below version 2.1.8 */ {
+    opacity: 0;
 }
 </style>
