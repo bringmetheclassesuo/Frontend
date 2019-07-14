@@ -1,47 +1,47 @@
 <template>
-    <div style = "padding: 10%">
+    <div style="padding: 10%">
         <a-form :form="form" @submit="handleSubmit">
             <a-form-item v-bind="formItemLayout" label="E-mail">
                 <a-input v-decorator="[
-                'email',
-                {
-                    rules: [{
-                    type: 'email', message: 'The input is not valid E-mail!',
-                    }, {
-                    required: true, message: 'Please input your E-mail!',
-                    }]
-                }
-                ]" />
+                        'email',
+                        {
+                            rules: [{
+                            type: 'email', message: 'The input is not valid E-mail!',
+                            }, {
+                            required: true, message: 'Please input your E-mail!',
+                            }]
+                        }
+                        ]" />
             </a-form-item>
             <a-form-item v-bind="formItemLayout" label="Password">
                 <a-input v-decorator="[
-                'password',
-                {
-                    rules: [{
-                    required: true, message: 'Please input your password!',
-                    }, {
-                    validator: validateToNextPassword,
-                    }],
-                }
-                ]" type="password" />
+                        'password',
+                        {
+                            rules: [{
+                            required: true, message: 'Please input your password!',
+                            }, {
+                            validator: validateToNextPassword,
+                            }],
+                        }
+                        ]" type="password" />
             </a-form-item>
             <a-form-item v-bind="formItemLayout" label="Confirm Password">
                 <a-input v-decorator="[
-                'confirm',
-                {
-                    rules: [{
-                    required: true, message: 'Please confirm your password!',
-                    }, {
-                    validator: compareToFirstPassword,
-                    }],
-                }
-                ]" type="password" @blur="handleConfirmBlur" />
+                        'confirm',
+                        {
+                            rules: [{
+                            required: true, message: 'Please confirm your password!',
+                            }, {
+                            validator: compareToFirstPassword,
+                            }],
+                        }
+                        ]" type="password" @blur="handleConfirmBlur" />
             </a-form-item>
             <a-form-item v-bind="tailFormItemLayout">
                 <a-checkbox v-decorator="['agreement', {valuePropName: 'checked'}]">
                     I have read the <a href="">
-                agreement
-                </a>
+                        agreement
+                        </a>
                 </a-checkbox>
             </a-form-item>
             <a-form-item v-bind="tailFormItemLayout">
@@ -54,11 +54,44 @@
 </template>
 
 
-</script>
-
 <script>
     export default {
         name: "CreateAccount",
+        data() {
+            return {
+                confirmDirty: false,
+                formItemLayout: {
+                    labelCol: {
+                        xs: {
+                            span: 24
+                        },
+                        sm: {
+                            span: 6
+                        },
+                    },
+                    wrapperCol: {
+                        xs: {
+                            span: 24
+                        },
+                        sm: {
+                            span: 12
+                        },
+                    },
+                },
+                tailFormItemLayout: {
+                    wrapperCol: {
+                        xs: {
+                            span: 24,
+                            offset: 0,
+                        },
+                        sm: {
+                            span: 7,
+                            offset: 8,
+                        },
+                    },
+                },
+            };
+        },
         beforeCreate() {
             this.form = this.$form.createForm(this);
         },
@@ -91,15 +124,6 @@
                     });
                 }
                 callback();
-            },
-            handleWebsiteChange(value) {
-                let autoCompleteResult;
-                if (!value) {
-                    autoCompleteResult = [];
-                } else {
-                    autoCompleteResult = ['.com', '.org', '.net'].map(domain => `${value}${domain}`);
-                }
-                this.autoCompleteResult = autoCompleteResult;
             },
         },
     }
