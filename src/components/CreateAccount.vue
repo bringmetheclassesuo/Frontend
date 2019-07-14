@@ -3,45 +3,50 @@
         <a-form :form="form" @submit="handleSubmit">
             <a-form-item v-bind="formItemLayout" label="E-mail">
                 <a-input v-decorator="[
-                        'email',
-                        {
-                            rules: [{
-                            type: 'email', message: 'The input is not valid E-mail!',
-                            }, {
-                            required: true, message: 'Please input your E-mail!',
-                            }]
-                        }
-                        ]" />
+                            'email',
+                            {
+                                rules: [{
+                                type: 'email', message: 'The input is not valid E-mail!',
+                                }, {
+                                required: true, message: 'Please input your E-mail!',
+                                }]
+                            }
+                            ]" />
             </a-form-item>
             <a-form-item v-bind="formItemLayout" label="Password">
                 <a-input v-decorator="[
-                        'password',
-                        {
-                            rules: [{
-                            required: true, message: 'Please input your password!',
-                            }, {
-                            validator: validateToNextPassword,
-                            }],
-                        }
-                        ]" type="password" />
+                            'password',
+                            {
+                                rules: [{
+                                required: true, message: 'Please input your password!',
+                                }, {
+                                validator: validateToNextPassword,
+                                }],
+                            }
+                            ]" type="password" />
             </a-form-item>
             <a-form-item v-bind="formItemLayout" label="Confirm Password">
                 <a-input v-decorator="[
-                        'confirm',
-                        {
-                            rules: [{
-                            required: true, message: 'Please confirm your password!',
-                            }, {
-                            validator: compareToFirstPassword,
-                            }],
-                        }
-                        ]" type="password" @blur="handleConfirmBlur" />
+                            'confirm',
+                            {
+                                rules: [{
+                                required: true, message: 'Please confirm your password!',
+                                }, {
+                                validator: compareToFirstPassword,
+                                }],
+                            }
+                            ]" type="password" @blur="handleConfirmBlur" />
             </a-form-item>
             <a-form-item v-bind="tailFormItemLayout">
                 <a-checkbox v-decorator="['agreement', {valuePropName: 'checked'}]">
-                    I have read the <a href="">
-                        agreement
-                        </a>
+                    I have read the
+                    <!--<a href="https://miro.medium.com/max/659/1*8xraf6eyaXh-myNXOXkqLA.jpeg">-->
+                    <a onclick="showModal()"> agreement </a>
+                        <a-modal title="Basic Modal" v-model="visible" @ok="handleOk">
+                            <p>Some contents...</p>
+                            <p>Some contents...</p>
+                            <p>Some contents...</p>
+                        </a-modal>
                 </a-checkbox>
             </a-form-item>
             <a-form-item v-bind="tailFormItemLayout">
@@ -124,6 +129,9 @@
                     });
                 }
                 callback();
+            },
+            showModal() {
+                this.visible = true
             },
         },
     }
