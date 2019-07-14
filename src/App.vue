@@ -25,11 +25,13 @@
 
 <script>
 import Search from './components/Search.vue'
+import CreateAccount from './components/CreateAccount.vue'
 
 
 export default {
   name: 'app',
   components: {
+    CreateAccount,
     // eslint-disable-next-line vue/no-unused-components
     Search
   },
