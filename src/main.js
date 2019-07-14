@@ -7,6 +7,7 @@ import Multiselect from 'vue-multiselect'
 import VueRouter from 'vue-router'
 import LogIn from "@/components/LogIn"
 import Search from '@/components/Search'
+import CreateAccount from "@/components/CreateAccount";
 
 Vue.use(VueRouter)
 
@@ -18,13 +19,14 @@ Vue.use(Antd)
 
 
 const router = new VueRouter({
-  routes: [
-    { path: '/', component: Search },
-    { path: '/login', component: LogIn }
-  ]
+    routes: [
+        {path: '/', component: Search},
+        {path: '/login', component: LogIn},
+        {path: '/create', component: CreateAccount}
+    ]
 })
 
 new Vue({
-  render: h => h(App),
-  router
+    render: h => h(App),
+    router
 }).$mount('#app')

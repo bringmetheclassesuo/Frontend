@@ -100,7 +100,7 @@
                 e.preventDefault();
                 this.form.validateFieldsAndScroll((err, values) => {
                     if (!err) {
-                        console.log('Received values of form: ', values);
+                        this.console.log('Received values of form: ', values);
                     }
                 });
             },
