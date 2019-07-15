@@ -31,7 +31,6 @@
 
 <script>
     import ACol from "ant-design-vue/es/grid/Col";
-    const data=[{type:"email", value:"admin@admin.ca"}]
     export default {
         name: "MyAccount",
         components: {ACol},
