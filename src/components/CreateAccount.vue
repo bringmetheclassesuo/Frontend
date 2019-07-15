@@ -3,50 +3,70 @@
         <a-form :form="form" @submit="handleSubmit">
             <a-form-item v-bind="formItemLayout" label="E-mail">
                 <a-input v-decorator="[
-                            'email',
-                            {
-                                rules: [{
-                                type: 'email', message: 'The input is not valid E-mail!',
-                                }, {
-                                required: true, message: 'Please input your E-mail!',
-                                }]
-                            }
-                            ]" />
+                                    'email',
+                                    {
+                                        rules: [{
+                                        type: 'email', message: 'The input is not valid E-mail!',
+                                        }, {
+                                        required: true, message: 'Please input your E-mail!',
+                                        }]
+                                    }
+                                    ]" />
             </a-form-item>
-            <a-form-item v-bind="formItemLayout" label="Password">
-                <a-input v-decorator="[
-                            'password',
-                            {
-                                rules: [{
-                                required: true, message: 'Please input your password!',
-                                }, {
-                                validator: validateToNextPassword,
-                                }],
-                            }
-                            ]" type="password" />
+            <a-form-item v-bind="passItemLayout" label="Password">
+                <a-form-item class="ant-col-xs-24 ant-col-sm-12" :style="{ display: 'inline-block', margin:0}">
+                    <a-input v-decorator="[
+                                    'password',
+                                    {
+                                        rules: [{
+                                        required: true, message: 'Please input your password!',
+                                        }, 
+                                        {
+                                        min: 6, message: 'Minimum length is 6 characters.',
+                                        },
+                                        {
+                                        pattern: '[a-z]', message: 'Must include lowercase letter.',
+                                        },
+                                        {
+                                        pattern: '[A-Z]', message: 'Must include uppercase letter.',
+                                        },
+                                        {
+                                        pattern: '[0-9]', message: 'Must include number.',
+                                        },
+                                        {
+                                        pattern: '[^0-9A-z]', message: 'Must include special character.',
+                                        },
+                                        {
+                                        validator: validateToNextPassword,
+                                        }],
+                                    }
+                                    ]" :type="pass1Visible" />
+                </a-form-item>
+                <a-form-item class="ant-col-xs-24 ant-col-sm-1" :style="{ display: 'inline-block', margin:0}">
+                    <a-button type="primary" :icon= "icon1" @click="viewPass(0)"/>
+                </a-form-item>
             </a-form-item>
-            <a-form-item v-bind="formItemLayout" label="Confirm Password">
-                <a-input v-decorator="[
-                            'confirm',
-                            {
-                                rules: [{
-                                required: true, message: 'Please confirm your password!',
-                                }, {
-                                validator: compareToFirstPassword,
-                                }],
-                            }
-                            ]" type="password" @blur="handleConfirmBlur" />
+            <a-form-item v-bind="passItemLayout" label="Confirm Password">
+                <a-form-item class="ant-col-xs-24 ant-col-sm-12" :style="{ display: 'inline-block', margin:0}">
+                    <a-input v-decorator="[
+                                        'confirm',
+                                        {
+                                            rules: [{
+                                            required: true, message: 'Please confirm your password!',
+                                            }, {
+                                            validator: compareToFirstPassword,
+                                            }],
+                                        }
+                                        ]" :type="pass2Visible" @blur="handleConfirmBlur" />
+                </a-form-item>
+                <a-form-item class="ant-col-xs-24 ant-col-sm-1" :style="{ display: 'inline-block', margin:0}">
+                    <a-button type="primary" :icon= "icon2" @click="viewPass(1)"/>
+                </a-form-item>
             </a-form-item>
             <a-form-item v-bind="tailFormItemLayout">
-                <a-checkbox v-decorator="['agreement', {valuePropName: 'checked'}]">
-                    I have read the
-                    <!--<a href="https://miro.medium.com/max/659/1*8xraf6eyaXh-myNXOXkqLA.jpeg">-->
-                    <a onclick="showModal()"> agreement </a>
-                        <a-modal title="Basic Modal" v-model="visible" @ok="handleOk">
-                            <p>Some contents...</p>
-                            <p>Some contents...</p>
-                            <p>Some contents...</p>
-                        </a-modal>
+                <a-checkbox v-decorator="['agreement', {valuePropName: 'checked', rules:[{validator: isChecked, message: 'Please read and accept the agreement'}]}]">
+                    I have read and accept the
+                    <a-button type="dashed" @click="warning"> agreement </a-button>
                 </a-checkbox>
             </a-form-item>
             <a-form-item v-bind="tailFormItemLayout">
@@ -64,6 +84,10 @@
         name: "CreateAccount",
         data() {
             return {
+                icon1: "eye-invisible",
+                icon2: "eye-invisible",
+                pass1Visible: "password",
+                pass2Visible: "password",
                 confirmDirty: false,
                 formItemLayout: {
                     labelCol: {
@@ -80,6 +104,16 @@
                         },
                         sm: {
                             span: 12
+                        },
+                    },
+                },
+                passItemLayout: {
+                    labelCol: {
+                        xs: {
+                            span: 24
+                        },
+                        sm: {
+                            span: 6
                         },
                     },
                 },
@@ -105,7 +139,10 @@
                 e.preventDefault();
                 this.form.validateFieldsAndScroll((err, values) => {
                     if (!err) {
-                        this.console.log('Received values of form: ', values);
+                        this.$router.push({
+                            path: '/'
+                        })
+                        //this.console.log('Received values of form: ', values);
                     }
                 });
             },
@@ -116,9 +153,17 @@
             compareToFirstPassword(rule, value, callback) {
                 const form = this.form;
                 if (value && value !== form.getFieldValue('password')) {
-                    callback('Two passwords that you enter is inconsistent!');
+                    callback('The passwords do not match!');
                 } else {
                     callback();
+                }
+            },
+            isChecked(rule, value, callback) {
+                const form = this.form;
+                if (form.getFieldValue('agreement')) {
+                    callback();
+                } else {
+                    callback('Please read and accept the agreement');
                 }
             },
             validateToNextPassword(rule, value, callback) {
@@ -130,9 +175,41 @@
                 }
                 callback();
             },
-            showModal() {
-                this.visible = true
+            warning() {
+                this.$warning({
+                    title: 'Terms of Use',
+                    content: ( <div>
+                        <p> Please agree </p> 
+                        <p> Not actually agreeing to anything </p>
+                        <p> No one reads these anyway </p> 
+                        </div>
+                    )
+                });
             },
+            viewPass(passId){
+                switch(passId) {
+                    case 0:
+                        if (this.icon1 == "eye"){
+                            this.icon1 = "eye-invisible";
+                            this.pass1Visible = "password";
+                        }
+                        else {
+                            this.icon1 = "eye";
+                            this.pass1Visible = "";
+                        }
+                        break;
+                    case 1:
+                        if (this.icon2 == "eye"){
+                            this.icon2 = "eye-invisible";
+                            this.pass2Visible = "password";
+                        }
+                        else {
+                            this.icon2 = "eye";
+                            this.pass2Visible = "";
+                        }
+                        break;
+                }
+            }
         },
     }
 </script>
