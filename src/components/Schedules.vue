@@ -5,26 +5,26 @@
             <a-button type="secondary" class="options" shape="circle" :size="large"><a-icon type="download" /></a-button>
             <a-button type="secondary" class="options" shape="circle" :size="large" style="float: left; margin-left: 0" @click="back"><a-icon type="arrow-left" /></a-button>
         </div>
-        <a-card hoverable style="width: 80%; display: inline-block">
+        <a-card hoverable style="width:80%; display: inline-block;">
             <a-carousel arrows>
                 <div
                         slot="prevArrow"
                         class="custom-slick-arrow"
-                        style="left: 10px;zIndex: 1"
+                        style="left: 1%;zIndex: 1"
                 >
                     <a-icon type="left-circle" />
                 </div>
                 <div
                         slot="nextArrow"
                         class="custom-slick-arrow"
-                        style="right: 10px"
+                        style="right: 1%"
                 >
                     <a-icon type="right-circle" />
                 </div>
-                <div><h3>1</h3></div>
-                <div><h3>2</h3></div>
-                <div><h3>3</h3></div>
-                <div><h3>4</h3></div>
+                <div><img src="../assets/Semester1Schedule.png" style="padding-top: 3%; padding-right: 4%; padding-left:4%; width: 100%; margin: auto;"/></div>
+                <div><img src="../assets/Semester1Schedule.png" style="padding-top: 3%; padding-right: 4%; padding-left:4%; width: 100%; margin: auto;"/></div>
+                <div><img src="../assets/Semester1Schedule.png" style="padding-top: 3%; padding-right: 4%; padding-left:4%; width: 100%; margin: auto;"/></div>
+                <div><img src="../assets/Semester1Schedule.png" style="padding-top: 3%; padding-right: 4%; padding-left:4%; width: 100%; margin: auto;"/></div>
             </a-carousel>
         </a-card>
     </div>
@@ -57,7 +57,8 @@
 <style scoped>
     .ant-carousel >>> .slick-slide {
         text-align: center;
-        height: 520px;
+        width: 100%;
+        height: 100%;
         line-height: 160px;
         background: #364d79;
         overflow: hidden;
