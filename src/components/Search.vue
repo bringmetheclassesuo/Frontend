@@ -12,6 +12,7 @@
                         :options="options"
                         :multiple="true"
                         openDirection='bottom'
+                        class="test"
                 ></multiselect>
                 <a-popover
                         style="padding: 0"
@@ -154,5 +155,17 @@
         float: left;
         font-size: xx-large;
         color: #FFFFFF;
+    }
+    .test >>> .multiselect__tag,.test >>> .multiselect__option--highlight, .test >>> .multiselect__option--highlight:after{
+        background: #8f001A;
+    }
+    .test >>> .multiselect__tag-icon:after{
+        color: #ffffff;
+    }
+    .test>>> .multiselect__tag-icon:focus, .test>>>.multiselect__tag-icon:hover{
+        background: rgb(224, 0, 41);
+    }
+    .test>>> .multiselect__option--selected.multiselect__option--highlight, .test>>>.multiselect__option--selected.multiselect__option--highlight:after{
+        background:rgb(224, 0, 41);
     }
 </style>
