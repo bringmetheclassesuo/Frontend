@@ -2,8 +2,8 @@
     <div class="hello">
 
         <div class="search">
-
-            <div style="padding-top: 45%">
+            <img src="../assets/uottawa_ver_black.png" width="276.8" height="234.4" style="margin-top: 17%">
+            <div style="padding-top: 7%">
                 <multiselect
                         style="float: left; width: 92%;"
                         v-model="value" placeholder="Search. . ."
