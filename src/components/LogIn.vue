@@ -18,6 +18,7 @@
                     <a-input
                             v-decorator="['userName',{rules: [{ required: true, message: 'Please input your username!' }]}]"
                             placeholder="Username"
+                            v-model="username"
                     >
                         <a-icon
                                 slot="prefix"
@@ -35,6 +36,7 @@
                             v-decorator="['password',{rules: [{ required: true, message: 'Please input your Password!' }]}]"
                             type="password"
                             placeholder="Password"
+                            v-model="password"
                     >
                         <a-icon
                                 slot="prefix"
@@ -49,6 +51,7 @@
                             html-type="submit"
                             :disabled="hasErrors(form.getFieldsError())"
                             style="width: 100%"
+                            @click="change"
                     >
                         Log in
                     </a-button>
@@ -80,13 +83,20 @@
             return {
                 hasErrors,
                 form: this.$form.createForm(this),
+                username:'',
+                password:''
             }
         },
-        mounted () {
+        mounted() {
             this.$nextTick(() => {
                 // To disabled submit button at the beginning.
                 this.form.validateFields();
             });
+        },
+        computed:{
+            loginStatus(){
+                return this.$store.state.loggedIn
+            }
         },
         methods: {
             userNameError () {
@@ -108,6 +118,12 @@
             },
             create(){
                 this.$router.push('create')
+            },
+            change(){
+                if (this.username == "admin" && this.password == "password"){
+                    this.$store.dispatch('changeStatus')
+                }
+                this.$router.push('/myaccount')
             }
         }
     }

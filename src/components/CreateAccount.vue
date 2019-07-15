@@ -137,6 +137,7 @@
         methods: {
             handleSubmit(e) {
                 e.preventDefault();
+                // eslint-disable-next-line no-unused-vars
                 this.form.validateFieldsAndScroll((err, values) => {
                     if (!err) {
                         this.$router.push({
@@ -176,15 +177,16 @@
                 callback();
             },
             warning() {
-                this.$warning({
-                    title: 'Terms of Use',
-                    content: ( <div>
-                        <p> Please agree </p> 
-                        <p> Not actually agreeing to anything </p>
-                        <p> No one reads these anyway </p> 
-                        </div>
-                    )
-                });
+                //TODO: fix this
+                // this.$warning({
+                //     title: 'Terms of Use',
+                //     content: ( <div>
+                //         <p> Please agree </p>
+                //         <p> Not actually agreeing to anything </p>
+                //         <p> No one reads these anyway </p>
+                //         </div>
+                //     )
+                // });
             },
             viewPass(passId){
                 switch(passId) {

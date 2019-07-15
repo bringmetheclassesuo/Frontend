@@ -39,7 +39,8 @@
 
                 <!--    <span> {{filters}}</span>-->
             </div>
-            <a-button type="primary" @click="openNotification" style="margin: 10px">Open the notification box</a-button>
+            <a-button type="secondary" :size="large" @click="resetSearch" style="margin: 10px; width: 130px">Reset</a-button>
+            <a-button type="primary" :size="large" @click="search" style="margin: 5px; width: 130px">Generate</a-button>
 
 
         </div>
@@ -71,25 +72,18 @@
             }
         },
         methods: {
-            openNotification() {
-                this.$notification.open({
-                    message: 'Courses',
-                    description: this.do(),
-                    onClick: () => {
-                        this.console.log('Notification Clicked!');
-                    },
-                });
+            search() {
+                //TODO: add search validation
+                /*if (this.value.length === 0 || this.value === null){
+
+                }*/
+                this.$router.push('schedules');
             },
             do() {
-                var i;
                 // eslint-disable-next-line no-unused-vars
-                var text;
+                let text;
                 text = '';
-                for (i = 0; i < this.value.length; i++) {
-                    text += this.value[i].name + ', '
-                }
-                text = text.substr(0, text.length - 2)
-                return text
+                return this.value.map(v => v.name).join(', ')
             },
             reset() {
                 for (let i of this.filters) {
@@ -111,6 +105,9 @@
             },
             switchpage(login){
                 this.$router.push({ path: login })
+            },
+            resetSearch(){
+                this.value = null
             }
         }
     }
