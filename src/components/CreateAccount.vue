@@ -83,7 +83,7 @@
                     </a-checkbox>
                 </a-form-item>
                 <a-form-item v-bind="registerItemLayout">
-                    <a-button type="primary" html-type="submit">
+                    <a-button type="primary" html-type="submit" :disabled="btnDisabled">
                         Register
                     </a-button>
                 </a-form-item>
@@ -103,6 +103,7 @@
                 pass1Visible: "password",
                 pass2Visible: "password",
                 confirmDirty: false,
+                btnDisabled: true,
                 formItemLayout: {
                     labelCol: {
                         xs: {
@@ -189,8 +190,10 @@
                 const form = this.form;
                 if (form.getFieldValue('agreement')) {
                     callback();
+                    this.btnDisabled = false;
                 } else {
                     callback('Please read and accept the agreement');
+                    this.btnDisabled = true;
                 }
             },
             validateToNextPassword(rule, value, callback) {
