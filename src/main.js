@@ -21,6 +21,7 @@ Vue.config.productionTip = false
 
 Vue.use(Antd)
 
+Vue.config.productionTip = false;
 
 const router = new VueRouter({
     routes: [

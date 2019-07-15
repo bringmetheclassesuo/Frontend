@@ -203,7 +203,6 @@
                 callback();
             },
             warning() {
-                //TODO: fix this
                 this.$warning({
                     title: 'Terms of Use',
                     content: ( <div>
