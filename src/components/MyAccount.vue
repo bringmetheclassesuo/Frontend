@@ -7,7 +7,18 @@
                     :bordered="true" 
                     style="width: 85%"
                 >
-                <p>Username</p>
+                    <a-table :dataSource="data">
+                        <a-table-column-group>
+                        <a-table-column
+                            dataIndex="type"
+                            key="type"
+                        />
+                        <a-table-column
+                            dataIndex="value"
+                            key="value"
+                        />
+                        </a-table-column-group>
+                    </a-table>
                     <a-button @click="signOut">Log out</a-button>
                 </a-card>
             </div>    
@@ -17,6 +28,7 @@
 </template>
 
 <script>
+    const data=[{type:"email", value:"admin@admin.ca"}]
     export default {
         name: "MyAccount",
         data () {
