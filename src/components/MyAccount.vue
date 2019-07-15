@@ -8,7 +8,7 @@
                     style="width: 85%"
                 >
                 <p>Username</p>
-                    <a-button @click="signOut">Sign out</a-button>
+                    <a-button @click="signOut">Log out</a-button>
                 </a-card>
             </div>    
         </div>    

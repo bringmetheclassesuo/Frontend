@@ -123,6 +123,8 @@
                 if (this.username == "admin" && this.password == "password"){
                     this.$store.dispatch('changeStatus')
                     this.$router.push('/myaccount')
+                }else{
+                    this.$message.warning('Incorrect username and/or password');
                 }
 
             }

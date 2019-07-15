@@ -1,5 +1,5 @@
 <template>
-    <div style="padding-top: 25%">
+    <div style="padding-top: 10%">
         <h1>oof</h1>
     </div>
 </template>

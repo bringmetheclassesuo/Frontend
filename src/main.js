@@ -21,7 +21,6 @@ Vue.config.productionTip = false
 
 Vue.use(Antd)
 
-Vue.config.productionTip = false;
 
 const router = new VueRouter({
     routes: [
@@ -33,6 +32,8 @@ const router = new VueRouter({
         {path: '/myaccount', component: MyAccount}
     ]
 })
+
+
 
 new Vue({
     store,

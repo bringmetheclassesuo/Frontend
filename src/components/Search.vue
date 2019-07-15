@@ -73,11 +73,12 @@
         },
         methods: {
             search() {
-                //TODO: add search validation
-                /*if (this.value.length === 0 || this.value === null){
-
-                }*/
-                this.$router.push('schedules');
+                if (this.value == null || this.value.length == 0){
+                    this.$message.warning('No courses are selected');
+                }
+                else{
+                    this.$router.push('schedules');
+                }
             },
             do() {
                 // eslint-disable-next-line no-unused-vars
