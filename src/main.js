@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Antd from 'ant-design-vue'
 // eslint-disable-next-line no-unused-vars
 import App from './App'
-import 'ant-design-vue/dist/antd.css'
+import 'ant-design-vue/dist/antd.less'
 import Multiselect from 'vue-multiselect'
 import VueRouter from 'vue-router'
 import LogIn from "@/components/LogIn"

@@ -1,25 +1,27 @@
 <template>
     <div>
         <div class="AccInfo">
-            <div style="padding: 10% 0 0 10%">
+            <div style="padding-top: 10%">
                 <a-card
                     title="Account Info" 
                     :bordered="true" 
-                    style="width: 85%"
+                    style="width: 85%; display: inline-block"
                 >
-                    <a-table :dataSource="data">
-                        <a-table-column-group>
-                        <a-table-column
-                            dataIndex="type"
-                            key="type"
-                        />
-                        <a-table-column
-                            dataIndex="value"
-                            key="value"
-                        />
-                        </a-table-column-group>
-                    </a-table>
-                    <a-button @click="signOut">Log out</a-button>
+                    <a-row type="flex" justify="space-around">
+                        <a-col span="12">
+                            <p style="float: left; padding-left: 90%">Email:</p>
+                        </a-col>
+                        <a-col span="12">
+                            <p style="float:left;">Admin@cool-mathgames.net</p>
+                        </a-col>
+                        <a-col span="12">
+                            <p style="float: left; padding-left: 90%">Name:</p>
+                        </a-col>
+                        <a-col span="12">
+                            <p style="float:left;">Admin</p>
+                        </a-col>
+                    </a-row>
+                    <a-button type="primary" style="width: 90%; display: inline-block" @click="signOut">Log out</a-button>
                 </a-card>
             </div>    
         </div>    
@@ -28,9 +30,11 @@
 </template>
 
 <script>
+    import ACol from "ant-design-vue/es/grid/Col";
     const data=[{type:"email", value:"admin@admin.ca"}]
     export default {
         name: "MyAccount",
+        components: {ACol},
         data () {
             return {
 
