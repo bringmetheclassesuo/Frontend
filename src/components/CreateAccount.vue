@@ -167,8 +167,9 @@
                 // eslint-disable-next-line no-unused-vars
                 this.form.validateFieldsAndScroll((err, values) => {
                     if (!err) {
+                        this.$store.dispatch('changeStatus')
                         this.$router.push({
-                            path: '/'
+                            path: '/myaccount'
                         })
                         //this.console.log('Received values of form: ', values);
                     }
