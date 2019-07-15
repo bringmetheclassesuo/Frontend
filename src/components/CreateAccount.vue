@@ -82,7 +82,7 @@
                         <a-button type="dashed" @click="warning"> agreement</a-button>
                     </a-checkbox>
                 </a-form-item>
-                <a-form-item v-bind="tailFormItemLayout">
+                <a-form-item v-bind="registerItemLayout">
                     <a-button type="primary" html-type="submit">
                         Register
                     </a-button>
@@ -138,7 +138,19 @@
                             offset: 0,
                         },
                         sm: {
-                            span: 9,
+                            span: 10,
+                            offset: 7,
+                        },
+                    },
+                },
+                registerItemLayout: {
+                    wrapperCol: {
+                        xs: {
+                            span: 24,
+                            offset: 0,
+                        },
+                        sm: {
+                            span: 7,
                             offset: 8,
                         },
                     },
