@@ -122,8 +122,9 @@
             change(){
                 if (this.username == "admin" && this.password == "password"){
                     this.$store.dispatch('changeStatus')
+                    this.$router.push('/myaccount')
                 }
-                this.$router.push('/myaccount')
+
             }
         }
     }
