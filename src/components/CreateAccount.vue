@@ -1,8 +1,10 @@
 <template>
-    <div style="padding: 10%">
-        <a-form :form="form" @submit="handleSubmit">
-            <a-form-item v-bind="formItemLayout" label="E-mail">
-                <a-input v-decorator="[
+    <div style="padding: 11%">
+        <a-card hoverable style="width: 90%; display: inline-block">
+            <h2>Create an account</h2>
+            <a-form :form="form" @submit="handleSubmit">
+                <a-form-item v-bind="formItemLayout" label="E-mail">
+                    <a-input v-decorator="[
                                     'email',
                                     {
                                         rules: [{
@@ -11,11 +13,21 @@
                                         required: true, message: 'Please input your E-mail!',
                                         }]
                                     }
-                                    ]" />
-            </a-form-item>
-            <a-form-item v-bind="passItemLayout" label="Password">
-                <a-form-item class="ant-col-xs-24 ant-col-sm-12" :style="{ display: 'inline-block', margin:0}">
+                                    ]"/>
+                </a-form-item>
+                <a-form-item v-bind="formItemLayout" label="Username">
                     <a-input v-decorator="[
+                                    'username',
+                                    {
+                                        rules: [{
+                                        required: true, message: 'Please input your username!',
+                                        }]
+                                    }
+                                    ]"/>
+                </a-form-item>
+                <a-form-item v-bind="passItemLayout" label="Password">
+                    <a-form-item class="ant-col-xs-24 ant-col-sm-12" :style="{ display: 'inline-block', margin:0}">
+                        <a-input v-decorator="[
                                     'password',
                                     {
                                         rules: [{
@@ -40,15 +52,15 @@
                                         validator: validateToNextPassword,
                                         }],
                                     }
-                                    ]" :type="pass1Visible" />
+                                    ]" :type="pass1Visible"/>
+                    </a-form-item>
+                    <a-form-item class="ant-col-xs-24 ant-col-sm-1" :style="{ display: 'inline-block', margin:0}">
+                        <a-button class="seePassword" type="primary" :icon="icon1" @click="viewPass(0)"/>
+                    </a-form-item>
                 </a-form-item>
-                <a-form-item class="ant-col-xs-24 ant-col-sm-1" :style="{ display: 'inline-block', margin:0}">
-                    <a-button type="primary" :icon= "icon1" @click="viewPass(0)"/>
-                </a-form-item>
-            </a-form-item>
-            <a-form-item v-bind="passItemLayout" label="Confirm Password">
-                <a-form-item class="ant-col-xs-24 ant-col-sm-12" :style="{ display: 'inline-block', margin:0}">
-                    <a-input v-decorator="[
+                <a-form-item v-bind="passItemLayout" label="Confirm Password">
+                    <a-form-item class="ant-col-xs-24 ant-col-sm-12" :style="{ display: 'inline-block', margin:0}">
+                        <a-input v-decorator="[
                                         'confirm',
                                         {
                                             rules: [{
@@ -57,24 +69,26 @@
                                             validator: compareToFirstPassword,
                                             }],
                                         }
-                                        ]" :type="pass2Visible" @blur="handleConfirmBlur" />
+                                        ]" :type="pass2Visible" @blur="handleConfirmBlur"/>
+                    </a-form-item>
+                    <a-form-item class="ant-col-xs-24 ant-col-sm-1" :style="{ display: 'inline-block', margin:0}">
+                        <a-button class="seePassword" type="primary" :icon="icon2" @click="viewPass(1)"/>
+                    </a-form-item>
                 </a-form-item>
-                <a-form-item class="ant-col-xs-24 ant-col-sm-1" :style="{ display: 'inline-block', margin:0}">
-                    <a-button type="primary" :icon= "icon2" @click="viewPass(1)"/>
+                <a-form-item v-bind="tailFormItemLayout">
+                    <a-checkbox
+                            v-decorator="['agreement', {valuePropName: 'checked', rules:[{validator: isChecked, message: 'Please read and accept the agreement'}]}]">
+                        I have read and accept the
+                        <a-button type="dashed" @click="warning"> agreement</a-button>
+                    </a-checkbox>
                 </a-form-item>
-            </a-form-item>
-            <a-form-item v-bind="tailFormItemLayout">
-                <a-checkbox v-decorator="['agreement', {valuePropName: 'checked', rules:[{validator: isChecked, message: 'Please read and accept the agreement'}]}]">
-                    I have read and accept the
-                    <a-button type="dashed" @click="warning"> agreement </a-button>
-                </a-checkbox>
-            </a-form-item>
-            <a-form-item v-bind="tailFormItemLayout">
-                <a-button type="primary" html-type="submit">
-                    Register
-                </a-button>
-            </a-form-item>
-        </a-form>
+                <a-form-item v-bind="tailFormItemLayout">
+                    <a-button type="primary" html-type="submit">
+                        Register
+                    </a-button>
+                </a-form-item>
+            </a-form>
+        </a-card>
     </div>
 </template>
 
@@ -124,7 +138,7 @@
                             offset: 0,
                         },
                         sm: {
-                            span: 7,
+                            span: 9,
                             offset: 8,
                         },
                     },
@@ -188,24 +202,22 @@
                 //     )
                 // });
             },
-            viewPass(passId){
-                switch(passId) {
+            viewPass(passId) {
+                switch (passId) {
                     case 0:
-                        if (this.icon1 == "eye"){
+                        if (this.icon1 == "eye") {
                             this.icon1 = "eye-invisible";
                             this.pass1Visible = "password";
-                        }
-                        else {
+                        } else {
                             this.icon1 = "eye";
                             this.pass1Visible = "";
                         }
                         break;
                     case 1:
-                        if (this.icon2 == "eye"){
+                        if (this.icon2 == "eye") {
                             this.icon2 = "eye-invisible";
                             this.pass2Visible = "password";
-                        }
-                        else {
+                        } else {
                             this.icon2 = "eye";
                             this.pass2Visible = "";
                         }
@@ -217,5 +229,7 @@
 </script>
 
 <style scoped>
-
+    .seePassword {
+        margin-left: 7px;
+    }
 </style>
