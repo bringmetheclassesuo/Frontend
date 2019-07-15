@@ -96,10 +96,11 @@
     }
 
     .title {
+        font-family: 'Mukta', sans-serif;
         z-index: 2;
         float: left;
-        font-size: xx-large;
-        color: #FFFFFF;
+        font-size: 33px;
+        color: #FFF;
         background: none;
         border: none
     }
