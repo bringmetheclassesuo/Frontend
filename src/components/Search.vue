@@ -11,6 +11,7 @@
                         label="code"
                         :options="options"
                         :multiple="true"
+                        openDirection='bottom'
                 ></multiselect>
                 <a-popover
                         style="padding: 0"
