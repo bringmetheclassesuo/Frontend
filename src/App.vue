@@ -1,9 +1,10 @@
+<!--Contains banner and transitions between components that are routed-->
 <template>
     <div id="app">
         <!--    <Search msg="Welcome to Your Vue.js App"/>-->
         <a-layout-header :style="{ position: 'fixed', zIndex: 1, width: '100%', paddingLeft: '25px' }">
             <div class="logo"/>
-            <button class="title" @click="switchpage('/')">Searchinator</button>
+            <button class="title" @click="switchpage('/')">UOrganizer</button>
             <a-menu
                     theme="dark"
                     mode="horizontal"

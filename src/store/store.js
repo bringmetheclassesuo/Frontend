@@ -2,7 +2,7 @@ import Vuex from 'vuex'
 import Vue from 'vue'
 
 Vue.use(Vuex)
-
+// State management
 export default new Vuex.Store({
     state: {
         loggedIn: false

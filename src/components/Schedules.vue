@@ -1,3 +1,4 @@
+<!--carousel that displays generated schedules-->
 <template>
     <div style="padding-top: 8%">
         <div style="width: 80%; display: inline-block">
@@ -21,6 +22,7 @@
                 >
                     <a-icon type="right-circle" />
                 </div>
+<!--                elements of carousel-->
                 <div><img src="../assets/Semester1Schedule.png" style="padding-top: 3%; padding-right: 4%; padding-left:4%; width: 100%; margin: auto;"/></div>
                 <div><img src="../assets/Semester1Schedule.png" style="padding-top: 3%; padding-right: 4%; padding-left:4%; width: 100%; margin: auto;"/></div>
                 <div><img src="../assets/Semester1Schedule.png" style="padding-top: 3%; padding-right: 4%; padding-left:4%; width: 100%; margin: auto;"/></div>

@@ -1,3 +1,4 @@
+<!--Account creation page with validation-->
 <template>
     <div style="padding: 11%">
         <a-card hoverable style="width: 90%; display: inline-block">

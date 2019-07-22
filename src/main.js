@@ -22,7 +22,7 @@ Vue.config.productionTip = false
 Vue.use(Antd)
 
 Vue.config.productionTip = false;
-
+//routes that can be used by the application
 const router = new VueRouter({
     routes: [
         {path: '/', component: Search},
@@ -35,7 +35,7 @@ const router = new VueRouter({
 })
 
 
-
+//renders the app
 new Vue({
     store,
     render: h => h(App),

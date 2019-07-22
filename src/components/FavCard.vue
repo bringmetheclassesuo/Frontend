@@ -1,3 +1,4 @@
+<!--Card that displays schedule, delete button and title-->
 <template>
     <div>
         <a-card :title="title" hoverable>

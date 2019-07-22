@@ -1,3 +1,4 @@
+<!--Login page with option to create account-->
 <template>
     <div>
         <a-card
@@ -63,6 +64,7 @@
                             icon="google"
                             :size="large"
                             style="width: 100%"
+                            href="https://www.google.com/"
                     >
                         Sign in with Google
                     </a-button>

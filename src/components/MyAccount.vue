@@ -1,3 +1,4 @@
+<!--Displays user information-->
 <template>
     <div>
         <div class="AccInfo">

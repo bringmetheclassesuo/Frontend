@@ -1,3 +1,4 @@
+<!--Handles multiselect of courses and other information pertaining search-->
 <template>
     <div class="hello">
 
@@ -31,7 +32,7 @@
                         </li>
                     </ul>
                     <div slot="content" style="padding-top: 5%;">
-                        <a-button slot="content" style="margin-right: 2%; width: 49%" @click="reset()">Reset</a-button>
+                        <a-button slot="content" style="margin-right: 2%; width: 49%" @click="resetFilters()">Reset</a-button>
                         <a-button type="primary" slot="content" style="width: 49%" @click="visible = !visible">Confirm
                         </a-button>
 
@@ -89,28 +90,15 @@
                 text = '';
                 return this.value.map(v => v.name).join(', ')
             },
-            reset() {
+            resetFilters() { //resets filters
                 for (let i of this.filters) {
                     i.check = false;
-                }
-            },
-            favourite(){
-                this.keyNum = '2'
-                if (this.loggedIn == false){
-                    const h = this.$createElement
-                    this.$info({
-                        title: 'You do not have access to this feature',
-                        content: h('div',{}, [
-                            h('p', 'If you would like to use favourites, please log in'),
-                        ]),
-                        onOk() {},
-                    });
                 }
             },
             switchpage(login){
                 this.$router.push({ path: login })
             },
-            resetSearch(){
+            resetSearch(){ // clears multiselect
                 this.value = null
             }
         }
