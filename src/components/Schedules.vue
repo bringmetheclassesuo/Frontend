@@ -21,21 +21,25 @@
                 >
                     <a-icon type="right-circle" />
                 </div>
-                <div><img src="../assets/Semester1Schedule.png" style="padding-top: 3%; padding-right: 4%; padding-left:4%; width: 100%; margin: auto;"/></div>
-                <div><img src="../assets/Semester1Schedule.png" style="padding-top: 3%; padding-right: 4%; padding-left:4%; width: 100%; margin: auto;"/></div>
-                <div><img src="../assets/Semester1Schedule.png" style="padding-top: 3%; padding-right: 4%; padding-left:4%; width: 100%; margin: auto;"/></div>
-                <div><img src="../assets/Semester1Schedule.png" style="padding-top: 3%; padding-right: 4%; padding-left:4%; width: 100%; margin: auto;"/></div>
+                <div><schedule :courseJSON="this.testJSON"/></div>
+                <!-- <div><schedule :courseJSON="this.testJSON"/></div>
+                <div><schedule :courseJSON="this.testJSON"/></div>
+                <div><schedule :courseJSON="this.testJSON"/></div> -->
             </a-carousel>
         </a-card>
     </div>
 </template>
 
 <script>
+    import Schedule from "./Schedule.vue"
+    import test from "../assets/Schedule1.json"
     export default {
         name: "Schedules",
+        components:{Schedule},
         data(){
             return{
-                filler: null
+                filler: null,
+                testJSON: test
             }
         },
         methods:{

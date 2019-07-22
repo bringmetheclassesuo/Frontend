@@ -1,0 +1,108 @@
+{
+    "Days":[
+        {
+            "Courses":[
+                {
+                    "Name":"SEG2911 C01", 
+                    "Type":"DGD",
+                    "TimeStart":"11",
+                    "TimeEnd":"14"
+                },
+                {
+                    "Name":"CSI2132 B02",
+                    "Type":"LAB",
+                    "TimeStart":"14",
+                    "TimeEnd":"17"
+                },
+                {
+                    "Name":"CSI2132 B05",
+                    "Type":"DGD",
+                    "TimeStart":"17",
+                    "TimeEnd":"20"
+                },
+                {
+                    "Name":"SEG2106 A01",
+                    "Type":"LAB",
+                    "TimeStart":"23",
+                    "TimeEnd":"29"
+                }
+            ]
+        },
+        {
+            "Courses":[
+                {
+                    "Name":"MAT2377 A00", 
+                    "Type":"LEC",
+                    "TimeStart":"5",
+                    "TimeEnd":"8"
+                },
+                {
+                    "Name":"SEG2106 A00",
+                    "Type":"LEC",
+                    "TimeStart":"11",
+                    "TimeEnd":"14"
+                }
+            ]
+        },
+        {
+            "Courses":[
+                {
+                    "Name":"CSI2101 B00", 
+                    "Type":"LEC",
+                    "TimeStart":"5",
+                    "TimeEnd":"8"
+                },
+                {
+                    "Name":"CSI2132 B02",
+                    "Type":"LEC",
+                    "TimeStart":"11",
+                    "TimeEnd":"14"
+                }
+            ]
+        },
+        {
+            "Courses":[
+                {
+                    "Name":"MAT2377 A00", 
+                    "Type":"LEC",
+                    "TimeStart":"2",
+                    "TimeEnd":"5"
+                },
+                {
+                    "Name":"SEG2106 A00",
+                    "Type":"LEC",
+                    "TimeStart":"8",
+                    "TimeEnd":"11"
+                },
+                {
+                    "Name":"CSI2101 B01",
+                    "Type":"DGD",
+                    "TimeStart":"20",
+                    "TimeEnd":"23"
+                },
+                {
+                    "Name":"SEG2911 C00",
+                    "Type":"LEC",
+                    "TimeStart":"23",
+                    "TimeEnd":"29"
+                }
+            ]
+        },
+        {
+            "Courses":[
+                {
+                    "Name":"CSI2101 B00", 
+                    "Type":"LEC",
+                    "TimeStart":"2",
+                    "TimeEnd":"5"
+                },
+                {
+                    "Name":"CSI2132 B00",
+                    "Type":"LEC",
+                    "TimeStart":"8",
+                    "TimeEnd":"11"
+                }
+            ]
+        }
+    ]
+}
